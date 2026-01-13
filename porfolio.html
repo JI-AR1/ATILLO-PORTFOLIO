@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayr Atillo | Web Developer</title>
+    <style>
+        :root {
+            --accent: #e63946;
+            --dark-bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --input-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
+        body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                        url('https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=2070') no-repeat center center/cover;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+        }
+
+        .profile-img {
+            width: 160px; height: 160px; border-radius: 50%; border: 3px solid var(--accent);
+            margin-bottom: 20px; object-fit: cover; box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .hero h1 { font-size: 3.5rem; letter-spacing: -1px; margin-bottom: 5px; }
+        .hero .subtitle { font-size: 1.2rem; color: var(--accent); font-weight: bold; text-transform: uppercase; margin-bottom: 15px; }
+        .location { font-size: 0.9rem; color: var(--text-dim); }
+
+        /* About & Skills */
+        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px; }
+        .card { background: var(--card-bg); padding: 40px; border-radius: 15px; transition: 0.3s; border: 1px solid transparent; }
+        .card:hover { transform: translateY(-5px); border: 1px solid #333; }
+        .card h3 { margin-bottom: 15px; color: var(--accent); }
+
+        /* Projects */
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .project-card { 
+            position: relative; border-radius: 15px; overflow: hidden; height: 300px; 
+            background: #222; cursor: zoom-in;
+        }
+        .project-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s transform; }
+        .project-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: 0.4s;
+        }
+        .project-card:hover img { transform: scale(1.1); }
+        .project-card:hover .project-overlay { opacity: 1; }
+
+        /* Lightbox Fullscreen */
+        #lightbox {
+            display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); justify-content: center; align-items: center; cursor: zoom-out;
+        }
+        #lightbox img { max-width: 90%; max-height: 85%; border-radius: 10px; border: 2px solid #333; }
+
+        /* Contact Section */
+        .contact-section { padding: 100px 20px; background: #080808; border-top: 1px solid #222; }
+        .contact-container { max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid #333; text-align: center; }
+        .contact-container h2 { font-size: 2rem; margin-bottom: 10px; }
+        .form-group { text-align: left; margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--accent); font-weight: bold; font-size: 0.9rem; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 15px; background: var(--input-bg); border: 1px solid #333; border-radius: 10px; color: white; outline: none; transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); background: rgba(255, 255, 255, 0.1); }
+        .send-btn {
+            width: 100%; padding: 15px; background: linear-gradient(45deg, #e63946, #b91c1c); border: none; border-radius: 10px;
+            color: white; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s;
+        }
+        .send-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4); }
+
+        footer { background: #050505; padding: 60px 20px; text-align: center; color: var(--text-dim); }
+
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <img src="JIAR.jpg" alt="Jayr Porras" class="profile-img">
+        <h1>JAYR ATILLO</h1>
+        <p class="subtitle">Web Developer</p>
+        <p class="location">📍 Buaya, Lapu-Lapu City, Cebu</p>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>About My Approach</h3>
+                <p>I am a respectful and prideful developer who values quality and precision. My time as a <strong>Red Cross Volunteer ❤️</strong> has shaped my generous personality, making me a great team player who is easy to get along with.</p>
+            </div>
+            <div class="card">
+                <h3>Technical Arsenal</h3>
+                <p>💻 <strong>Computer Literacy:</strong> Deep understanding of system architectures and digital tools.</p>
+                <p>🧠 <strong>Programming:</strong> Expertly crafting logic and user interfaces for the modern web.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="project-grid">
+            <div class="project-card" onclick="openLightbox('ecommerce.png')">
+                <img src="ecommerce.png" alt="Ecommerce">
+                <div class="project-overlay"><h4>E-Commerce Platform</h4><p>Full-stack shopping experience</p></div>
+            </div>
+
+            <div class="project-card" onclick="openLightbox('project3.png')">
+                <img src="project3.png" alt="Anime Page">
+                <div class="project-overlay"><h4>Anime Watching Page</h4><p>Streaming interface & media library</p></div>
+            </div>
+
+            <div class="project-card" onclick="openLightbox('enrollment.png')">
+                <img src="enrollment.png" alt="Enrollment System">
+                <div class="project-overlay"><h4>Enrollment System</h4><p>Database management & student registration</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Full Screen View">
+    </div>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <h2>Let's Connect 🚀</h2>
+            <p>I'll get back to you ASAP!</p>
+            <form>
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <textarea rows="4" placeholder="Your Message"></textarea>
+                </div>
+                <button type="button" class="send-btn">Send it! ✈️</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <h2>Jayr Porras</h2>
+        <p style="margin: 15px 0;">📧 JAYRPORRAS0@GMAIL.COM | 📞 (+63) 985 9786 883</p>
+        <p>Buaya, Lapu-Lapu City, Cebu 📍</p>
+    </footer>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Stop scrolling
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Resume scrolling
+        }
+    </script>
+</body>
+</html>
